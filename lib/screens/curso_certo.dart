@@ -5,10 +5,8 @@ class CursoCerto extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Curso Certo",
-      home: Scaffold(
+    return SafeArea(
+      child: Scaffold(
         body: Center(
           child: Text("Olá mundo!"),
         ),

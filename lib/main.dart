@@ -1,6 +1,19 @@
+import 'package:curso_certo/screens/splash.dart';
 import 'package:flutter/material.dart';
-import 'screens/curso_certo.dart';
 
 void main() {
-  runApp(CursoCerto());
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Curso Certo",
+      home: Splash(),
+    );
+  }
 }
