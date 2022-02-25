@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'curso_certo.dart';
+import 'screens/curso_certo.dart';
 
 void main() {
   runApp(CursoCerto());
