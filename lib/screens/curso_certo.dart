@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class CursoCerto extends StatelessWidget {
@@ -7,8 +9,26 @@ class CursoCerto extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Center(
-          child: Text("Olá mundo!"),
+        body: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  color: Color.fromRGBO(45, 46, 102, 1),
+                  height: 80,
+                  width: double.infinity,
+                ),
+                Expanded(
+                  flex: 4,
+                  child: Container(
+                    color: Color.fromRGBO(162, 172, 171, 1),
+                    width: double.infinity,
+                  ),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
