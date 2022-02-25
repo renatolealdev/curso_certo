@@ -16,7 +16,7 @@ class CursoCerto extends StatelessWidget {
               children: [
                 Container(
                   color: Color.fromRGBO(45, 46, 102, 1),
-                  height: 80,
+                  height: 60,
                   width: double.infinity,
                 ),
                 Expanded(
