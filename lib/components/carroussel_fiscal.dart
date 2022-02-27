@@ -48,7 +48,7 @@ class CarrousselFiscal extends StatelessWidget {
                     child: Column(
                       children: [
                         Expanded(
-                          flex: 3,
+                          flex: 4,
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.only(
@@ -64,22 +64,40 @@ class CarrousselFiscal extends StatelessWidget {
                         ),
                         Expanded(
                           flex: 1,
-                          child: Center(
-                            child: Text(
-                              "${apiFiscal[index]['title']}",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: 'Kanit',
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12.0, vertical: 5.0),
+                            child: Container(
+                              alignment: Alignment.bottomCenter,
+                              child: Text(
+                                "${apiFiscal[index]['title']}",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontFamily: 'Kanit',
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
                           ),
                         ),
                         Expanded(
                           flex: 1,
-                          child: Container(
-                            color: Colors.black38,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12.0, vertical: 5.0),
+                            child: Container(
+                              alignment: Alignment.topCenter,
+                              child: Text(
+                                "${apiFiscal[index]['subtitle']}",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontFamily: 'Kanit',
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ],
