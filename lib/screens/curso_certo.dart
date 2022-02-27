@@ -24,7 +24,6 @@ class _CursoCertoState extends State<CursoCerto> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  margin: EdgeInsets.only(bottom: 10.0),
                   height: 50,
                   width: double.infinity,
                   decoration: BoxDecoration(

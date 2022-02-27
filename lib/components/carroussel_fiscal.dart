@@ -20,7 +20,7 @@ class CarrousselFiscal extends StatelessWidget {
                 style: TextStyle(
                     fontFamily: 'Kanit',
                     fontSize: 20,
-                    fontWeight: FontWeight.w300),
+                    fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -32,7 +32,7 @@ class CarrousselFiscal extends StatelessWidget {
                 itemCount: apiFiscal.length,
                 itemBuilder: (context, index) {
                   return Container(
-                    margin: EdgeInsets.symmetric(vertical: 5, horizontal: 50),
+                    margin: EdgeInsets.symmetric(vertical: 5, horizontal: 60),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20.0),
@@ -48,7 +48,7 @@ class CarrousselFiscal extends StatelessWidget {
                     child: Column(
                       children: [
                         Expanded(
-                          flex: 4,
+                          flex: 1,
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.only(
@@ -57,7 +57,7 @@ class CarrousselFiscal extends StatelessWidget {
                               ),
                               image: DecorationImage(
                                 image: NetworkImage(apiFiscal[index]['banner']),
-                                fit: BoxFit.cover,
+                                fit: BoxFit.fitWidth,
                               ),
                             ),
                           ),
@@ -65,38 +65,40 @@ class CarrousselFiscal extends StatelessWidget {
                         Expanded(
                           flex: 1,
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 12.0, vertical: 5.0),
-                            child: Container(
-                              alignment: Alignment.bottomCenter,
-                              child: Text(
-                                "${apiFiscal[index]['title']}",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontFamily: 'Kanit',
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w500,
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Expanded(
+                                  flex: 3,
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      "${apiFiscal[index]['title']}",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontFamily: 'Kanit',
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 12.0, vertical: 5.0),
-                            child: Container(
-                              alignment: Alignment.topCenter,
-                              child: Text(
-                                "${apiFiscal[index]['subtitle']}",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontFamily: 'Kanit',
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w300,
+                                Expanded(
+                                  flex: 2,
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      "${apiFiscal[index]['subtitle']}",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontFamily: 'Kanit',
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
+                              ],
                             ),
                           ),
                         ),
