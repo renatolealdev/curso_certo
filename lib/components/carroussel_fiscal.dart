@@ -29,7 +29,7 @@ class CarrousselFiscal extends StatelessWidget {
             child: Container(
               alignment: Alignment.topCenter,
               child: PageView.builder(
-                itemCount: apiFiscal.length,
+                itemCount: apiFiscal[0].length,
                 itemBuilder: (context, index) {
                   return Container(
                     margin: EdgeInsets.symmetric(vertical: 5, horizontal: 60),
@@ -56,7 +56,7 @@ class CarrousselFiscal extends StatelessWidget {
                                 topRight: Radius.circular(20),
                               ),
                               image: DecorationImage(
-                                image: NetworkImage(apiFiscal[index]['banner']),
+                                image: NetworkImage(apiFiscal[0][index]['banner']),
                                 fit: BoxFit.fitWidth,
                               ),
                             ),
@@ -73,7 +73,7 @@ class CarrousselFiscal extends StatelessWidget {
                                   child: Container(
                                     alignment: Alignment.center,
                                     child: Text(
-                                      "${apiFiscal[index]['title']}",
+                                      "${apiFiscal[0][index]['title']}",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontFamily: 'Kanit',
@@ -88,7 +88,7 @@ class CarrousselFiscal extends StatelessWidget {
                                   child: Container(
                                     alignment: Alignment.center,
                                     child: Text(
-                                      "${apiFiscal[index]['subtitle']}",
+                                      "${apiFiscal[0][index]['subtitle']}",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontFamily: 'Kanit',

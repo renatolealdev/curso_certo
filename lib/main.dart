@@ -1,10 +1,7 @@
-import 'dart:convert';
-import 'package:curso_certo/screens/curso_certo.dart';
+import 'repository/get_apis.dart';
 import 'package:flutter/material.dart';
+import 'package:curso_certo/screens/curso_certo.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:http/http.dart' as http;
-
-import 'repository/get_fiscais.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,8 +15,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,7 +22,7 @@ class _MyAppState extends State<MyApp> {
       title: "Curso Certo",
       home: Scaffold(
         body: FutureBuilder(
-          future: getFiscais(),
+          future: getAPI(),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               return Center(
