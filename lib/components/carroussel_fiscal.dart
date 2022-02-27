@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CarrousselFiscal extends StatelessWidget {
-  final apiFiscal;
+  final apiS;
   const CarrousselFiscal({
     Key? key,
-    required this.apiFiscal,
+    required this.apiS,
   }) : super(key: key);
 
   @override
@@ -29,7 +29,7 @@ class CarrousselFiscal extends StatelessWidget {
             child: Container(
               alignment: Alignment.topCenter,
               child: PageView.builder(
-                itemCount: apiFiscal[0].length,
+                itemCount: apiS[0].length,
                 itemBuilder: (context, index) {
                   return Container(
                     margin: EdgeInsets.symmetric(vertical: 5, horizontal: 60),
@@ -56,7 +56,7 @@ class CarrousselFiscal extends StatelessWidget {
                                 topRight: Radius.circular(20),
                               ),
                               image: DecorationImage(
-                                image: NetworkImage(apiFiscal[0][index]['banner']),
+                                image: NetworkImage(apiS[0][index]['banner']),
                                 fit: BoxFit.fitWidth,
                               ),
                             ),
@@ -73,7 +73,7 @@ class CarrousselFiscal extends StatelessWidget {
                                   child: Container(
                                     alignment: Alignment.center,
                                     child: Text(
-                                      "${apiFiscal[0][index]['title']}",
+                                      "${apiS[0][index]['title']}",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontFamily: 'Kanit',
@@ -88,7 +88,7 @@ class CarrousselFiscal extends StatelessWidget {
                                   child: Container(
                                     alignment: Alignment.center,
                                     child: Text(
-                                      "${apiFiscal[0][index]['subtitle']}",
+                                      "${apiS[0][index]['subtitle']}",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontFamily: 'Kanit',

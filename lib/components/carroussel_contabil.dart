@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CarrousselContabil extends StatelessWidget {
-  const CarrousselContabil({Key? key}) : super(key: key);
+  final apiS;
+  const CarrousselContabil({
+    Key? key,
+    required this.apiS,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

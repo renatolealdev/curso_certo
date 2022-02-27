@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
             }
 
             if (snapshot.hasData) {
-              return CursoCerto(apiFiscal: snapshot.data);
+              return CursoCerto(apiS: snapshot.data);
             }
 
             return AnimatedSplashScreen(

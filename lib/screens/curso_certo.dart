@@ -3,9 +3,9 @@ import 'package:curso_certo/components/carroussel_fiscal.dart';
 import 'package:flutter/material.dart';
 
 class CursoCerto extends StatefulWidget {
-  final apiFiscal;
+  final apiS;
 
-  const CursoCerto({Key? key, required this.apiFiscal}) : super(key: key);
+  const CursoCerto({Key? key, required this.apiS}) : super(key: key);
 
   @override
   State<CursoCerto> createState() => _CursoCertoState();
@@ -63,11 +63,11 @@ class _CursoCertoState extends State<CursoCerto> {
                             Expanded(
                               flex: 1,
                               child:
-                                  CarrousselFiscal(apiFiscal: widget.apiFiscal),
+                                  CarrousselFiscal(apiS: widget.apiS),
                             ),
                             Expanded(
                               flex: 1,
-                              child: CarrousselContabil(),
+                              child: CarrousselContabil(apiS: widget.apiS),
                             ),
                           ],
                         );
