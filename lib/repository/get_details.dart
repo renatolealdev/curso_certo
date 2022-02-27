@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-Future getFiscais() async {
+Future getDetails() async {
   final url = Uri.parse('https://cefis.com.br/api/v1/event?c=fiscal');
   var response = await http.get(url);
   if (response.statusCode == 200) {
