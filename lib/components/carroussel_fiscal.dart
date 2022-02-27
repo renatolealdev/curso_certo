@@ -14,18 +14,21 @@ class CarrousselFiscal extends StatelessWidget {
         children: <Widget>[
           Expanded(
             flex: 1,
-            child: Center(
+            child: Container(
+              alignment: Alignment.bottomCenter,
               child: Text(
                 'Fiscal',
                 style: TextStyle(
+                    height: 1,
+                    color: Color.fromRGBO(16, 25, 32, 1),
                     fontFamily: 'Kanit',
-                    fontSize: 20,
+                    fontSize: 22,
                     fontWeight: FontWeight.w600),
               ),
             ),
           ),
           Expanded(
-            flex: 8,
+            flex: 10,
             child: Container(
               alignment: Alignment.topCenter,
               child: PageView.builder(
@@ -34,13 +37,13 @@ class CarrousselFiscal extends StatelessWidget {
                   return Container(
                     margin: EdgeInsets.symmetric(vertical: 5, horizontal: 60),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Color.fromRGBO(16, 25, 32, 1),
                       borderRadius: BorderRadius.circular(20.0),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey.shade300,
-                          blurRadius: 5,
-                          offset: Offset(4, 4),
+                          color: Color.fromRGBO(16, 25, 32, 0.500),
+                          blurRadius: 2,
+                          offset: Offset(2, 2),
                           spreadRadius: 0.5,
                         ),
                       ],
@@ -57,7 +60,7 @@ class CarrousselFiscal extends StatelessWidget {
                               ),
                               image: DecorationImage(
                                 image: NetworkImage(apiS[0][index]['banner']),
-                                fit: BoxFit.fitWidth,
+                                fit: BoxFit.cover,
                               ),
                             ),
                           ),
@@ -76,6 +79,7 @@ class CarrousselFiscal extends StatelessWidget {
                                       "${apiS[0][index]['title']}",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
+                                        color: Colors.white,
                                         fontFamily: 'Kanit',
                                         fontSize: 18,
                                         fontWeight: FontWeight.w500,
@@ -92,6 +96,7 @@ class CarrousselFiscal extends StatelessWidget {
                                       "${apiS[0][index]['subtitle']}",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
+                                        color: Color.fromRGBO(162, 172, 171, 1),
                                         fontFamily: 'Kanit',
                                         fontSize: 15,
                                         fontWeight: FontWeight.w300,
