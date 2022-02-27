@@ -14,71 +14,50 @@ class CursoCerto extends StatefulWidget {
 class _CursoCertoState extends State<CursoCerto> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.grey[100],
-        body: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: 50,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.shade300,
-                        blurRadius: 3,
-                        offset: Offset(2, 2),
-                        spreadRadius: 0.5,
-                      ),
-                    ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: Text(
-                      "Cursos",
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontFamily: 'Kanit',
-                        fontWeight: FontWeight.w600,
-                        color: Color.fromRGBO(16, 25, 32, 1),
-                      ),
-                    ),
-                  ),
+    final appBar = AppBar(
+      backgroundColor: Color.fromRGBO(45, 46, 102, 1),
+      title: Text(
+        'Cursos',
+        style: TextStyle(
+          fontFamily: 'kanit',
+          fontSize: 30,
+          fontWeight: FontWeight.w700,
+          color: Color.fromRGBO(255, 199, 44, 1),
+        ),
+      ),
+      centerTitle: false,
+    );
+
+    final availableHeight = MediaQuery.of(context).size.height -
+        MediaQuery.of(context).padding.top -
+        appBar.preferredSize.height;
+    return Scaffold(
+      appBar: appBar,
+      backgroundColor: Color.fromRGBO(250, 226, 104, 1),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            height: availableHeight - 50,
+            margin: EdgeInsets.symmetric(horizontal: 10.0),
+            width: double.infinity,
+            child: Column(
+              children: <Widget>[
+                Expanded(
+                  flex: 1,
+                  child: CarrousselFiscal(apiS: widget.apiS),
                 ),
                 Expanded(
-                  flex: 4,
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10.0),
-                    width: double.infinity,
-                    child: LayoutBuilder(
-                      builder:
-                          (BuildContext context, BoxConstraints constraints) {
-                        return Column(
-                          children: <Widget>[
-                            Expanded(
-                              flex: 1,
-                              child:
-                                  CarrousselFiscal(apiS: widget.apiS),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: CarrousselContabil(apiS: widget.apiS),
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                  ),
+                  flex: 1,
+                  child: CarrousselContabil(apiS: widget.apiS),
                 ),
               ],
-            );
-          },
-        ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+        ],
       ),
     );
   }

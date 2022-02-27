@@ -16,7 +16,7 @@ class CarrousselFiscal extends StatelessWidget {
             flex: 1,
             child: Center(
               child: Text(
-                'Área Fiscal',
+                'Fiscal',
                 style: TextStyle(
                     fontFamily: 'Kanit',
                     fontSize: 20,
@@ -78,7 +78,8 @@ class CarrousselFiscal extends StatelessWidget {
                                       style: TextStyle(
                                         fontFamily: 'Kanit',
                                         fontSize: 18,
-                                        fontWeight: FontWeight.w400,
+                                        fontWeight: FontWeight.w500,
+                                        height: 1,
                                       ),
                                     ),
                                   ),
@@ -94,6 +95,7 @@ class CarrousselFiscal extends StatelessWidget {
                                         fontFamily: 'Kanit',
                                         fontSize: 15,
                                         fontWeight: FontWeight.w300,
+                                        height: 1,
                                       ),
                                     ),
                                   ),
