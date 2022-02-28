@@ -20,7 +20,7 @@ class _CursoCertoState extends State<CursoCerto> {
         'Cursos',
         style: TextStyle(
           fontFamily: 'kanit',
-          fontSize: 30,
+          fontSize: 32,
           fontWeight: FontWeight.w700,
           color: Color.fromRGBO(255, 199, 44, 1),
         ),

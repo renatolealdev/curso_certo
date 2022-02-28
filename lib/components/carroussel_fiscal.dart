@@ -1,11 +1,33 @@
 import 'package:flutter/material.dart';
 
-class CarrousselFiscal extends StatelessWidget {
+class CarrousselFiscal extends StatefulWidget {
   final apiS;
-  const CarrousselFiscal({
+  CarrousselFiscal({
     Key? key,
     required this.apiS,
   }) : super(key: key);
+
+  @override
+  State<CarrousselFiscal> createState() => _CarrousselFiscalState();
+}
+
+class _CarrousselFiscalState extends State<CarrousselFiscal> {
+  final PageController _pageController = PageController(viewportFraction: 0.8);
+
+  int _currentPage = 0;
+
+  @override
+  void initState() {
+    _pageController.addListener(() {
+      int? next = _pageController.page!.round();
+      if (_currentPage != next) {
+        setState(() {
+          _currentPage = next;
+        });
+      }
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,19 +54,27 @@ class CarrousselFiscal extends StatelessWidget {
             child: Container(
               alignment: Alignment.topCenter,
               child: PageView.builder(
-                itemCount: apiS[0].length,
+                controller: _pageController,
+                itemCount: widget.apiS[0].length,
                 itemBuilder: (context, index) {
-                  return Container(
-                    margin: EdgeInsets.symmetric(vertical: 5, horizontal: 60),
+                  bool activePage = index == _currentPage;
+                  final double vertical = activePage ? 5.0 : 25.0;
+                  final double blur = activePage ? 3 : 0;
+                  final double offset = activePage ? 2 : 0;
+                  return AnimatedContainer(
+                    duration: Duration(milliseconds: 400),
+                    curve: Curves.easeOutQuint,
+                    margin: EdgeInsets.symmetric(
+                        vertical: vertical, horizontal: 15),
                     decoration: BoxDecoration(
                       color: Color.fromRGBO(16, 25, 32, 1),
                       borderRadius: BorderRadius.circular(20.0),
                       boxShadow: [
                         BoxShadow(
-                          color: Color.fromRGBO(16, 25, 32, 0.500),
-                          blurRadius: 2,
-                          offset: Offset(2, 2),
-                          spreadRadius: 0.5,
+                          color: Color.fromRGBO(16, 25, 32, 0.700),
+                          blurRadius: blur,
+                          offset: Offset(offset, offset),
+                          spreadRadius: 1,
                         ),
                       ],
                     ),
@@ -59,7 +89,8 @@ class CarrousselFiscal extends StatelessWidget {
                                 topRight: Radius.circular(20),
                               ),
                               image: DecorationImage(
-                                image: NetworkImage(apiS[0][index]['banner']),
+                                image: NetworkImage(
+                                    widget.apiS[0][index]['banner']),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -70,6 +101,7 @@ class CarrousselFiscal extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Stack(
+                              alignment: Alignment.bottomCenter,
                               children: [
                                 Column(
                                   children: [
@@ -78,7 +110,7 @@ class CarrousselFiscal extends StatelessWidget {
                                       child: Container(
                                         alignment: Alignment.center,
                                         child: Text(
-                                          "${apiS[0][index]['title']}",
+                                          "${widget.apiS[0][index]['title']}",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             color: Colors.white,
@@ -94,9 +126,9 @@ class CarrousselFiscal extends StatelessWidget {
                                       flex: 2,
                                       child: Container(
                                         margin: EdgeInsets.only(bottom: 10.0),
-                                        alignment: Alignment.center,
+                                        alignment: Alignment.topCenter,
                                         child: Text(
-                                          "${apiS[0][index]['subtitle']}",
+                                          "${widget.apiS[0][index]['subtitle']}",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             color: Color.fromRGBO(
@@ -111,23 +143,19 @@ class CarrousselFiscal extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                Positioned(
-                                  bottom: 0,
-                                  right: 0,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Color.fromRGBO(255, 199, 44, 1),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 5.0, vertical: 1.0),
-                                      child: Text(
-                                        '${index + 1} / ${apiS[0].length}',
-                                        style: TextStyle(
-                                          fontFamily: 'Kanit',
-                                          fontSize: 13,
-                                        ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: Color.fromRGBO(255, 199, 44, 1),
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 5.0),
+                                    child: Text(
+                                      '${index + 1} / ${widget.apiS[0].length}',
+                                      style: TextStyle(
+                                        fontFamily: 'Kanit',
+                                        fontSize: 13,
                                       ),
                                     ),
                                   ),
