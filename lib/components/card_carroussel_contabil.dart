@@ -1,3 +1,8 @@
+import 'package:curso_certo/components/card_banner.dart';
+import 'package:curso_certo/components/card_marker.dart';
+import 'package:curso_certo/components/card_text_subtitle.dart';
+import 'package:curso_certo/components/card_text_title.dart';
+import 'package:curso_certo/components/progressIndicator.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import '../repository/get_api_details.dart';
@@ -60,10 +65,17 @@ class _CarrousselContabilState extends State<CarrousselContabil> {
                 controller: _pageController,
                 itemCount: widget.apiS[1].length,
                 itemBuilder: (context, index) {
+                  final subtitleCardCurrent = widget.apiS[1][index]['subtitle'];
+                  final titleCardCurrent = widget.apiS[1][index]['title'];
+                  final currentAndLengthPage =
+                      '${index + 1} / ${widget.apiS[1].length}';
+                  final bannerCardCurrent = widget.apiS[1][index]['banner'];
+
                   bool activePage = index == _currentPage;
                   final double vertical = activePage ? 5.0 : 25.0;
                   final double blur = activePage ? 3 : 0;
                   final double offset = activePage ? 2 : 0;
+
                   return AnimatedContainer(
                     duration: Duration(milliseconds: 800),
                     curve: Curves.easeOutQuint,
@@ -108,17 +120,7 @@ class _CarrousselContabilState extends State<CarrousselContabil> {
                                   othersDetails: snapshot.data,
                                 );
                               }
-
-                              return Container(
-                                color: Color.fromRGBO(250, 226, 104, 1),
-                                child: Center(
-                                  child: CircularProgressIndicator(
-                                    color: Color.fromRGBO(255, 199, 44, 1),
-                                    backgroundColor:
-                                        Color.fromRGBO(16, 25, 32, 1),
-                                  ),
-                                ),
-                              );
+                              return ProgressIndicatorPage();
                             },
                           ),
                         ));
@@ -132,38 +134,10 @@ class _CarrousselContabilState extends State<CarrousselContabil> {
                             child: Stack(
                               alignment: Alignment.topCenter,
                               children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(20),
-                                      topRight: Radius.circular(20),
-                                    ),
-                                    image: DecorationImage(
-                                      image: NetworkImage(
-                                          widget.apiS[1][index]['banner']),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(top: 5),
-                                  decoration: BoxDecoration(
-                                    color: Color.fromRGBO(255, 199, 44, 0.7),
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 5.0),
-                                    child: Text(
-                                      '${index + 1} / ${widget.apiS[1].length}',
-                                      style: TextStyle(
-                                        fontFamily: 'Kanit',
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                                BannerCard(
+                                    bannerCardCurrent: bannerCardCurrent),
+                                MarkerCard(
+                                    currentAndLengthPage: currentAndLengthPage),
                               ],
                             ),
                           ),
@@ -171,48 +145,18 @@ class _CarrousselContabilState extends State<CarrousselContabil> {
                             flex: 1,
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Stack(
-                                alignment: Alignment.bottomCenter,
+                              child: Column(
                                 children: [
-                                  Column(
-                                    children: [
-                                      Expanded(
-                                        flex: 3,
-                                        child: Container(
-                                          alignment: Alignment.center,
-                                          child: Text(
-                                            "${widget.apiS[1][index]['title']}",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontFamily: 'Kanit',
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w500,
-                                              height: 1,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        flex: 2,
-                                        child: Container(
-                                          margin: EdgeInsets.only(bottom: 10.0),
-                                          alignment: Alignment.topCenter,
-                                          child: Text(
-                                            "${widget.apiS[1][index]['subtitle']}",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              color: Color.fromRGBO(
-                                                  162, 172, 171, 1),
-                                              fontFamily: 'Kanit',
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w300,
-                                              height: 1,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                                  Expanded(
+                                    flex: 3,
+                                    child: TitleCardCurrent(
+                                        titleCardCurrent: titleCardCurrent),
+                                  ),
+                                  Expanded(
+                                    flex: 2,
+                                    child: CardSubtitle(
+                                        subtitleCardCurrent:
+                                            subtitleCardCurrent),
                                   ),
                                 ],
                               ),

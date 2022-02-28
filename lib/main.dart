@@ -1,5 +1,4 @@
 import 'package:flutter/services.dart';
-
 import 'repository/get_apis.dart';
 import 'package:flutter/material.dart';
 import 'package:curso_certo/screens/curso_certo.dart';

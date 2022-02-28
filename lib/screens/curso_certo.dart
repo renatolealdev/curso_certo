@@ -1,5 +1,5 @@
-import 'package:curso_certo/components/carroussel_contabil.dart';
-import 'package:curso_certo/components/carroussel_fiscal.dart';
+import 'package:curso_certo/components/card_carroussel_contabil.dart';
+import 'package:curso_certo/components/card_carroussel_fiscal.dart';
 import 'package:flutter/material.dart';
 
 class CursoCerto extends StatefulWidget {

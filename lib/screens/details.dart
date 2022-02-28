@@ -1,3 +1,7 @@
+import 'package:curso_certo/components/detail_text_goal.dart';
+import 'package:curso_certo/components/detail_text_resume.dart';
+import 'package:curso_certo/components/detail_text_subtitle.dart';
+import 'package:curso_certo/components/detail_text_title.dart';
 import 'package:flutter/material.dart';
 
 class Details extends StatelessWidget {
@@ -20,6 +24,11 @@ class Details extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final resumeCurrentCourse = othersDetails
+        .where((el) => el['id'] == idCurrent)
+        .toList()[0]['resume'];
+    final goalCurrentCourse =
+        othersDetails.where((el) => el['id'] == idCurrent).toList()[0]['goal'];
     final appBar = AppBar(
       backgroundColor: Color.fromRGBO(45, 46, 102, 1),
       title: Text(
@@ -55,51 +64,8 @@ class Details extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
-                    Container(
-                      alignment: Alignment.bottomCenter,
-                      padding: EdgeInsets.only(
-                        top: 10,
-                        right: 20,
-                        left: 20,
-                      ),
-                      child: Text(
-                        '${titleCurrent}',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Color.fromRGBO(255, 199, 44, 1),
-                            height: 1,
-                            fontFamily: 'Kanit',
-                            fontSize: 22,
-                            fontWeight: FontWeight.w800),
-                      ),
-                    ),
-                    Container(
-                      width: double.infinity,
-                      alignment: Alignment.center,
-                      margin: EdgeInsets.only(top: 10, right: 20, left: 20),
-                      padding: EdgeInsets.only(
-                        top: 7,
-                        right: 10,
-                        left: 10,
-                      ),
-                      decoration: BoxDecoration(
-                          border: Border(
-                        top: BorderSide(
-                          width: 0.5,
-                          color: Colors.blue,
-                        ),
-                      )),
-                      child: Text(
-                        '${subtitleCurrent}',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            height: 1,
-                            fontFamily: 'Kanit',
-                            fontSize: 18,
-                            fontWeight: FontWeight.w300),
-                      ),
-                    ),
+                    TitleDetails(titleCurrent: titleCurrent),
+                    SubtitleDetails(subtitleCurrent: subtitleCurrent),
                     Container(
                       margin: EdgeInsets.only(top: 25),
                       child: Text(
@@ -112,23 +78,8 @@ class Details extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
-                      alignment: Alignment.center,
-                      padding: EdgeInsets.only(
-                        top: 3,
-                        right: 15,
-                        left: 15,
-                      ),
-                      child: Text(
-                        '${othersDetails.where((el) => el['id'] == idCurrent).toList()[0]['resume']}',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Color.fromRGBO(162, 172, 171, 1),
-                            height: 1.1,
-                            fontFamily: 'Kanit',
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400),
-                      ),
+                    ResumeDetails(
+                      resumeCurrent: resumeCurrentCourse,
                     ),
                     Container(
                       margin: EdgeInsets.only(top: 25),
@@ -142,23 +93,7 @@ class Details extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
-                      padding: EdgeInsets.only(
-                        top: 3,
-                        right: 15,
-                        left: 15,
-                      ),
-                      child: Text(
-                        '${othersDetails.where((el) => el['id'] == idCurrent).toList()[0]['goal']}',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Color.fromRGBO(162, 172, 171, 1),
-                            height: 1.1,
-                            fontFamily: 'Kanit',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400),
-                      ),
-                    ),
+                    GoalDetails(goalCurrent: goalCurrentCourse),
                   ],
                 ),
               ),
