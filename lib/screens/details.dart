@@ -39,7 +39,7 @@ class Details extends StatelessWidget {
         appBar.preferredSize.height;
     return Scaffold(
       appBar: appBar,
-      backgroundColor: Color.fromRGBO(250, 226, 104, 1),
+      backgroundColor: Color.fromRGBO(16, 25, 32, 1),
       body: Column(
         children: [
           Container(
@@ -57,26 +57,43 @@ class Details extends StatelessWidget {
                   children: [
                     Container(
                       alignment: Alignment.bottomCenter,
-                      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                      color: Colors.black12,
+                      padding: EdgeInsets.only(
+                        top: 10,
+                        right: 20,
+                        left: 20,
+                      ),
                       child: Text(
                         '${titleCurrent}',
                         textAlign: TextAlign.center,
                         style: TextStyle(
+                            color: Color.fromRGBO(255, 199, 44, 1),
                             height: 1,
                             fontFamily: 'Kanit',
                             fontSize: 22,
-                            fontWeight: FontWeight.w600),
+                            fontWeight: FontWeight.w800),
                       ),
                     ),
                     Container(
-                      alignment: Alignment.topCenter,
-                      padding: EdgeInsets.symmetric(vertical: 1, horizontal: 5),
-                      color: Colors.black26,
+                      width: double.infinity,
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.only(top: 10, right: 20, left: 20),
+                      padding: EdgeInsets.only(
+                        top: 7,
+                        right: 10,
+                        left: 10,
+                      ),
+                      decoration: BoxDecoration(
+                          border: Border(
+                        top: BorderSide(
+                          width: 0.5,
+                          color: Colors.blue,
+                        ),
+                      )),
                       child: Text(
                         '${subtitleCurrent}',
-                        textAlign: TextAlign.start,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
+                            color: Colors.white,
                             height: 1,
                             fontFamily: 'Kanit',
                             fontSize: 18,
@@ -84,14 +101,29 @@ class Details extends StatelessWidget {
                       ),
                     ),
                     Container(
+                      margin: EdgeInsets.only(top: 25),
+                      child: Text(
+                        'Descrição do curso:',
+                        style: TextStyle(
+                          color: Color.fromRGBO(250, 226, 104, 1),
+                          fontFamily: 'Kanit',
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                    Container(
                       alignment: Alignment.center,
-                      padding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                      color: Colors.deepPurple,
+                      padding: EdgeInsets.only(
+                        top: 3,
+                        right: 15,
+                        left: 15,
+                      ),
                       child: Text(
                         '${othersDetails.where((el) => el['id'] == idCurrent).toList()[0]['resume']}',
                         textAlign: TextAlign.center,
                         style: TextStyle(
+                            color: Color.fromRGBO(162, 172, 171, 1),
                             height: 1.1,
                             fontFamily: 'Kanit',
                             fontSize: 18,
@@ -99,13 +131,28 @@ class Details extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                      color: Colors.amber,
+                      margin: EdgeInsets.only(top: 25),
+                      child: Text(
+                        'Objetivo(s) deste curso:',
+                        style: TextStyle(
+                          color: Color.fromRGBO(250, 226, 104, 1),
+                          fontFamily: 'Kanit',
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(
+                        top: 3,
+                        right: 15,
+                        left: 15,
+                      ),
                       child: Text(
                         '${othersDetails.where((el) => el['id'] == idCurrent).toList()[0]['goal']}',
                         textAlign: TextAlign.center,
                         style: TextStyle(
+                            color: Color.fromRGBO(162, 172, 171, 1),
                             height: 1.1,
                             fontFamily: 'Kanit',
                             fontSize: 16,
