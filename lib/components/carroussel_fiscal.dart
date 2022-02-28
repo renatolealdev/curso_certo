@@ -1,3 +1,5 @@
+import 'package:curso_certo/repository/get_api_details.dart';
+
 import '../screens/details.dart';
 import 'package:flutter/material.dart';
 
@@ -63,7 +65,7 @@ class _CarrousselFiscalState extends State<CarrousselFiscal> {
                   final double blur = activePage ? 3 : 0;
                   final double offset = activePage ? 2 : 0;
                   return AnimatedContainer(
-                    duration: Duration(milliseconds: 400),
+                    duration: Duration(milliseconds: 800),
                     curve: Curves.easeOutQuint,
                     margin: EdgeInsets.symmetric(
                         vertical: vertical, horizontal: 15),
@@ -83,9 +85,12 @@ class _CarrousselFiscalState extends State<CarrousselFiscal> {
                       onTap: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (_) => Details(
-                              bannerCurrent: widget.apiS[0][index]['banner'],
-                            ),
+                            builder: (_) {
+                              getAPIDetails(widget.apiS[0][index]['id']);
+                              return Details(
+                                  bannerCurrent: widget.apiS[0][index]
+                                      ['banner']);
+                            },
                           ),
                         );
                       },

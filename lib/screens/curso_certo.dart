@@ -39,7 +39,6 @@ class _CursoCertoState extends State<CursoCerto> {
         children: [
           Container(
             height: availableHeight - 50,
-            margin: EdgeInsets.symmetric(horizontal: 10.0),
             width: double.infinity,
             child: Column(
               children: <Widget>[

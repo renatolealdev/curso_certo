@@ -63,7 +63,7 @@ class _CarrousselContabilState extends State<CarrousselContabil> {
                   final double blur = activePage ? 3 : 0;
                   final double offset = activePage ? 2 : 0;
                   return AnimatedContainer(
-                    duration: Duration(milliseconds: 400),
+                    duration: Duration(milliseconds: 800),
                     curve: Curves.easeOutQuint,
                     margin: EdgeInsets.symmetric(
                         vertical: vertical, horizontal: 15),
@@ -83,7 +83,8 @@ class _CarrousselContabilState extends State<CarrousselContabil> {
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (_) => Details(
-                                  bannerCurrent: widget.apiS[1][index]['banner'],
+                                  bannerCurrent: widget.apiS[1][index]
+                                      ['banner'],
                                 )));
                       },
                       splashColor: Color.fromRGBO(255, 199, 44, 0.7),

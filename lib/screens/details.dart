@@ -40,8 +40,8 @@ class Details extends StatelessWidget {
     return Scaffold(
       appBar: appBar,
       backgroundColor: Color.fromRGBO(250, 226, 104, 1),
-      body: Container(
-        child: Image.network(bannerCurrent),
+      body: Column(
+        children: [],
       ),
     );
   }
