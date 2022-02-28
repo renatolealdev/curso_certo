@@ -82,18 +82,42 @@ class _CarrousselFiscalState extends State<CarrousselFiscal> {
                       children: [
                         Expanded(
                           flex: 1,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                topRight: Radius.circular(20),
+                          child: Stack(
+                            alignment: Alignment.topCenter,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    topRight: Radius.circular(20),
+                                  ),
+                                  image: DecorationImage(
+                                    image: NetworkImage(
+                                        widget.apiS[0][index]['banner']),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                               ),
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                    widget.apiS[0][index]['banner']),
-                                fit: BoxFit.cover,
+                              Container(
+                                margin: EdgeInsets.only(top: 5),
+                                decoration: BoxDecoration(
+                                  color: Color.fromRGBO(255, 199, 44, 0.7),
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 5.0),
+                                  child: Text(
+                                    '${index + 1} / ${widget.apiS[0].length}',
+                                    style: TextStyle(
+                                      fontFamily: 'Kanit',
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
+                            ],
                           ),
                         ),
                         Expanded(
@@ -142,23 +166,6 @@ class _CarrousselFiscalState extends State<CarrousselFiscal> {
                                       ),
                                     ),
                                   ],
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: Color.fromRGBO(255, 199, 44, 1),
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 5.0),
-                                    child: Text(
-                                      '${index + 1} / ${widget.apiS[0].length}',
-                                      style: TextStyle(
-                                        fontFamily: 'Kanit',
-                                        fontSize: 13,
-                                      ),
-                                    ),
-                                  ),
                                 ),
                               ],
                             ),
