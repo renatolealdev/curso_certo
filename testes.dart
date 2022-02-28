@@ -8,6 +8,6 @@ main() {
 
   var listFiscal = listData.where((element) => element['category'] == 'Fiscal').toList();
 
-  print(listFiscal);
+  print(listFiscal.indexOf());
 
 }

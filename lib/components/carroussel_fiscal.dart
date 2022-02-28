@@ -69,38 +69,65 @@ class CarrousselFiscal extends StatelessWidget {
                           flex: 1,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Column(
+                            child: Stack(
                               children: [
-                                Expanded(
-                                  flex: 3,
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      "${apiS[0][index]['title']}",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontFamily: 'Kanit',
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w500,
-                                        height: 1,
+                                Column(
+                                  children: [
+                                    Expanded(
+                                      flex: 3,
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          "${apiS[0][index]['title']}",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontFamily: 'Kanit',
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500,
+                                            height: 1,
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
+                                    Expanded(
+                                      flex: 2,
+                                      child: Container(
+                                        margin: EdgeInsets.only(bottom: 10.0),
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          "${apiS[0][index]['subtitle']}",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            color: Color.fromRGBO(
+                                                162, 172, 171, 1),
+                                            fontFamily: 'Kanit',
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w300,
+                                            height: 1,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                Expanded(
-                                  flex: 2,
+                                Positioned(
+                                  bottom: 0,
+                                  right: 0,
                                   child: Container(
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      "${apiS[0][index]['subtitle']}",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Color.fromRGBO(162, 172, 171, 1),
-                                        fontFamily: 'Kanit',
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w300,
-                                        height: 1,
+                                    decoration: BoxDecoration(
+                                      color: Color.fromRGBO(255, 199, 44, 1),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5.0, vertical: 1.0),
+                                      child: Text(
+                                        '${index + 1} / ${apiS[0].length}',
+                                        style: TextStyle(
+                                          fontFamily: 'Kanit',
+                                          fontSize: 13,
+                                        ),
                                       ),
                                     ),
                                   ),
