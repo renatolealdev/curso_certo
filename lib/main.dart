@@ -1,3 +1,5 @@
+import 'package:flutter/services.dart';
+
 import 'repository/get_apis.dart';
 import 'package:flutter/material.dart';
 import 'package:curso_certo/screens/curso_certo.dart';
@@ -17,6 +19,9 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Curso Certo",
