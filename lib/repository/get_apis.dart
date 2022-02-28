@@ -8,7 +8,8 @@ Future getAPI() async {
   var responseFiscais = await http.get(urlFiscais);
   if (responseFiscais.statusCode == 200) {
     var jsonFiscais = jsonDecode(utf8.decode(responseFiscais.bodyBytes));
-    returnGetApi.add(jsonFiscais['data']);
+    returnGetApi.add(
+        jsonFiscais['data'].where((el) => el['category'] == 'Fiscal').toList());
   } else {
     throw Exception('Erro ao carregar dados! <throwError>');
   }
@@ -17,7 +18,7 @@ Future getAPI() async {
   var response = await http.get(urlContabil);
   if (response.statusCode == 200) {
     var jsonContabil = jsonDecode(utf8.decode(response.bodyBytes));
-    returnGetApi.add(jsonContabil['data']);
+    returnGetApi.add(jsonContabil['data'].where((el) => el['category'] == 'Contabil').toList());
   } else {
     throw Exception('Erro ao carregar dados! <throwError>');
   }
