@@ -11,7 +11,7 @@ Future getAPI() async {
     returnGetApi.add(
         jsonFiscais['data'].where((el) => el['category'] == 'Fiscal').toList());
   } else {
-    throw Exception('Erro ao carregar dados! <throwError>');
+    throw Exception('Erro ao carregar dados! <throwError | getFiscais | >');
   }
 
   final urlContabil = Uri.parse('https://cefis.com.br/api/v1/event?c=contabil');
@@ -21,7 +21,7 @@ Future getAPI() async {
     returnGetApi.add(
         jsonContabil['data'].where((el) => el['category'] == 'Contabil').toList());
   } else {
-    throw Exception('Erro ao carregar dados! <throwError>');
+    throw Exception('Erro ao carregar dados! <throwError | getContábil | >');
   }
 
   return returnGetApi;

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../repository/get_api_details.dart';
 import '../screens/details.dart';
 
 class CarrousselContabil extends StatefulWidget {
@@ -81,11 +82,16 @@ class _CarrousselContabilState extends State<CarrousselContabil> {
                     ),
                     child: InkWell(
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (_) => Details(
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) {
+                              getAPIDetails(widget.apiS[1][index]['id']);
+                              return Details(
                                   bannerCurrent: widget.apiS[1][index]
-                                      ['banner'],
-                                )));
+                                      ['banner']);
+                            },
+                          ),
+                        );
                       },
                       splashColor: Color.fromRGBO(255, 199, 44, 0.7),
                       borderRadius: BorderRadius.circular(20.0),

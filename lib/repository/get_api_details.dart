@@ -3,15 +3,15 @@ import 'dart:convert';
 
 Future getAPIDetails(int id) async {
   final int idCourse = id;
-  List<List> returnGetApiDetails = [];
+  List returnGetApiDetails = [];
 
   final urlDetails = Uri.parse('https://cefis.com.br/api/v1/event/${idCourse}');
   var responseDetails = await http.get(urlDetails);
   if (responseDetails.statusCode == 200) {
     var jsonDetails = jsonDecode(utf8.decode(responseDetails.bodyBytes));
-    print(jsonDetails['data']);
+    returnGetApiDetails.add(jsonDetails['data']);
   } else {
-    throw Exception('Erro ao carregar dados! <throwError>');
+    throw Exception('Erro ao carregar dados! <throwError | getDetails | >');
   }
 
   return returnGetApiDetails;
