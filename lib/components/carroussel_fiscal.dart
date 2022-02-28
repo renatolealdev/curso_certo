@@ -1,4 +1,5 @@
 import 'package:curso_certo/repository/get_api_details.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../screens/details.dart';
 import 'package:flutter/material.dart';
@@ -84,45 +85,46 @@ class _CarrousselFiscalState extends State<CarrousselFiscal> {
                     child: InkWell(
                       onTap: () {
                         Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (_) {
-                              return FutureBuilder(
-                                future:
-                                    getAPIDetails(widget.apiS[0][index]['id']),
-                                builder: (context, snapshot) {
-                                  if (snapshot.hasError) {
-                                    return Center(
-                                      child: Text(
-                                          "Erro ao carregar dados! <snapshotError | pageDetails | >"),
-                                    );
-                                  }
-
-                                  if (snapshot.hasData) {
-                                    return Details(
-                                      bannerCurrent: widget.apiS[0][index]
-                                          ['banner'],
-                                      titleCurrent: widget.apiS[0][index]
-                                          ['title'],
-                                      subtitleCurrent: widget.apiS[0][index]
-                                          ['subtitle'],
-                                      idCurrent: widget.apiS[0][index]['id'],
-                                      othersDetails: snapshot.data,
-                                    );
-                                  }
-
-                                  return Container(
-                                    color: Color.fromRGBO(250, 226, 104, 1),
-                                    child: Center(
-                                      child: CircularProgressIndicator(
-                                        color: Color.fromRGBO(255, 199, 44, 1),
-                                        backgroundColor:
-                                            Color.fromRGBO(16, 25, 32, 1),
-                                      ),
-                                    ),
+                          PageTransition(
+                            type: PageTransitionType.fade,
+                            alignment: Alignment.center,
+                            duration: Duration(milliseconds: 500),
+                            child: FutureBuilder(
+                              future:
+                                  getAPIDetails(widget.apiS[0][index]['id']),
+                              builder: (context, snapshot) {
+                                if (snapshot.hasError) {
+                                  return Center(
+                                    child: Text(
+                                        "Erro ao carregar dados! <snapshotError | pageDetails | >"),
                                   );
-                                },
-                              );
-                            },
+                                }
+
+                                if (snapshot.hasData) {
+                                  return Details(
+                                    bannerCurrent: widget.apiS[0][index]
+                                        ['banner'],
+                                    titleCurrent: widget.apiS[0][index]
+                                        ['title'],
+                                    subtitleCurrent: widget.apiS[0][index]
+                                        ['subtitle'],
+                                    idCurrent: widget.apiS[0][index]['id'],
+                                    othersDetails: snapshot.data,
+                                  );
+                                }
+
+                                return Container(
+                                  color: Color.fromRGBO(250, 226, 104, 1),
+                                  child: Center(
+                                    child: CircularProgressIndicator(
+                                      color: Color.fromRGBO(255, 199, 44, 1),
+                                      backgroundColor:
+                                          Color.fromRGBO(16, 25, 32, 1),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
                           ),
                         );
                       },

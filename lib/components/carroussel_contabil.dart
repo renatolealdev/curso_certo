@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import '../repository/get_api_details.dart';
 import '../screens/details.dart';
 
@@ -82,48 +83,45 @@ class _CarrousselContabilState extends State<CarrousselContabil> {
                     ),
                     child: InkWell(
                       onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (_) {
-                              return FutureBuilder(
-                                future:
-                                    getAPIDetails(widget.apiS[1][index]['id']),
-                                builder: (context, snapshot) {
-                                  if (snapshot.hasError) {
-                                    return Center(
-                                      child: Text(
-                                          "Erro ao carregar dados! <snapshotError | pageDetails | >"),
-                                    );
-                                  }
+                        Navigator.of(context).push(PageTransition(
+                          type: PageTransitionType.fade,
+                          alignment: Alignment.center,
+                          duration: Duration(milliseconds: 500),
+                          child: FutureBuilder(
+                            future: getAPIDetails(widget.apiS[1][index]['id']),
+                            builder: (context, snapshot) {
+                              if (snapshot.hasError) {
+                                return Center(
+                                  child: Text(
+                                      "Erro ao carregar dados! <snapshotError | pageDetails | >"),
+                                );
+                              }
 
-                                  if (snapshot.hasData) {
-                                    return Details(
-                                      bannerCurrent: widget.apiS[1][index]
-                                          ['banner'],
-                                      titleCurrent: widget.apiS[1][index]
-                                          ['title'],
-                                      subtitleCurrent: widget.apiS[1][index]
-                                          ['subtitle'],
-                                      idCurrent: widget.apiS[1][index]['id'],
-                                      othersDetails: snapshot.data,
-                                    );
-                                  }
+                              if (snapshot.hasData) {
+                                return Details(
+                                  bannerCurrent: widget.apiS[1][index]
+                                      ['banner'],
+                                  titleCurrent: widget.apiS[1][index]['title'],
+                                  subtitleCurrent: widget.apiS[1][index]
+                                      ['subtitle'],
+                                  idCurrent: widget.apiS[1][index]['id'],
+                                  othersDetails: snapshot.data,
+                                );
+                              }
 
-                                  return Container(
-                                    color: Color.fromRGBO(250, 226, 104, 1),
-                                    child: Center(
-                                      child: CircularProgressIndicator(
-                                        color: Color.fromRGBO(255, 199, 44, 1),
-                                        backgroundColor:
-                                            Color.fromRGBO(16, 25, 32, 1),
-                                      ),
-                                    ),
-                                  );
-                                },
+                              return Container(
+                                color: Color.fromRGBO(250, 226, 104, 1),
+                                child: Center(
+                                  child: CircularProgressIndicator(
+                                    color: Color.fromRGBO(255, 199, 44, 1),
+                                    backgroundColor:
+                                        Color.fromRGBO(16, 25, 32, 1),
+                                  ),
+                                ),
                               );
                             },
                           ),
-                        );
+                        ));
                       },
                       splashColor: Color.fromRGBO(255, 199, 44, 0.7),
                       borderRadius: BorderRadius.circular(20.0),
