@@ -85,10 +85,42 @@ class _CarrousselContabilState extends State<CarrousselContabil> {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (_) {
-                              getAPIDetails(widget.apiS[1][index]['id']);
-                              return Details(
-                                  bannerCurrent: widget.apiS[1][index]
-                                      ['banner']);
+                              return FutureBuilder(
+                                future:
+                                    getAPIDetails(widget.apiS[1][index]['id']),
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasError) {
+                                    return Center(
+                                      child: Text(
+                                          "Erro ao carregar dados! <snapshotError | pageDetails | >"),
+                                    );
+                                  }
+
+                                  if (snapshot.hasData) {
+                                    return Details(
+                                      bannerCurrent: widget.apiS[1][index]
+                                          ['banner'],
+                                      titleCurrent: widget.apiS[1][index]
+                                          ['title'],
+                                      subtitleCurrent: widget.apiS[1][index]
+                                          ['subtitle'],
+                                      idCurrent: widget.apiS[1][index]['id'],
+                                      othersDetails: snapshot.data,
+                                    );
+                                  }
+
+                                  return Container(
+                                    color: Color.fromRGBO(250, 226, 104, 1),
+                                    child: Center(
+                                      child: CircularProgressIndicator(
+                                        color: Color.fromRGBO(255, 199, 44, 1),
+                                        backgroundColor:
+                                            Color.fromRGBO(16, 25, 32, 1),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
                             },
                           ),
                         );

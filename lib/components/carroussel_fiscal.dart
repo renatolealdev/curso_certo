@@ -101,8 +101,10 @@ class _CarrousselFiscalState extends State<CarrousselFiscal> {
                                     return Details(
                                       bannerCurrent: widget.apiS[0][index]
                                           ['banner'],
-                                      titleCurrent: widget.apiS[0][index]['title'],
-                                      subtitleCurrent: widget.apiS[0][index]['subtitle'],
+                                      titleCurrent: widget.apiS[0][index]
+                                          ['title'],
+                                      subtitleCurrent: widget.apiS[0][index]
+                                          ['subtitle'],
                                       idCurrent: widget.apiS[0][index]['id'],
                                       othersDetails: snapshot.data,
                                     );
@@ -120,12 +122,6 @@ class _CarrousselFiscalState extends State<CarrousselFiscal> {
                                   );
                                 },
                               );
-
-                              // getAPIDetails(widget.apiS[0][index]['id']);
-
-                              // return Details(
-                              //     bannerCurrent: widget.apiS[0][index]
-                              //         ['banner']);
                             },
                           ),
                         );
