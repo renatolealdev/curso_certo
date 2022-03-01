@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../components/card_carroussel_contabil.dart';
-import '../components/card_carroussel_fiscal.dart';
+import '../components/card_carrousel_contabil.dart';
+import '../components/card_carrousel_fiscal.dart';
 
 class CursoCerto extends StatefulWidget {
 // Esta Page, recebe como parâmetro em sua chamada, o resultado da função Future, que retorna uma List como o Decode dos dois EndPoints: <?c=fiscal> e <?c=contabil>
@@ -48,11 +48,11 @@ class _CursoCertoState extends State<CursoCerto> {
               children: <Widget>[
                 Expanded(
                   flex: 1,
-                  child: CarrousselFiscal(apiS: widget.apiS), // PageView.Builder
+                  child: CarrouselFiscal(apiS: widget.apiS), // PageView.Builder
                 ),
                 Expanded(
                   flex: 1,
-                  child: CarrousselContabil(apiS: widget.apiS), // PageView.Builder
+                  child: CarrouselContabil(apiS: widget.apiS), // PageView.Builder
                 ),
               ],
             ),

@@ -7,18 +7,18 @@ import 'card_marker.dart';
 import 'card_text_title.dart';
 import 'progressIndicator.dart';
 
-class CarrousselFiscal extends StatefulWidget {
+class CarrouselContabil extends StatefulWidget {
   final apiS;
-  CarrousselFiscal({
+  CarrouselContabil({
     Key? key,
     required this.apiS,
   }) : super(key: key);
 
   @override
-  State<CarrousselFiscal> createState() => _CarrousselFiscalState();
+  State<CarrouselContabil> createState() => _CarrouselContabilState();
 }
 
-class _CarrousselFiscalState extends State<CarrousselFiscal> {
+class _CarrouselContabilState extends State<CarrouselContabil> {
   final PageController _pageController = PageController(viewportFraction: 0.8);
 
   int _currentPage = 0;
@@ -46,7 +46,7 @@ class _CarrousselFiscalState extends State<CarrousselFiscal> {
             child: Container(
               alignment: Alignment.bottomCenter,
               child: Text(
-                'Fiscal',
+                'Contábil',
                 style: TextStyle(
                     height: 1,
                     color: Color.fromRGBO(16, 25, 32, 1),
@@ -62,14 +62,14 @@ class _CarrousselFiscalState extends State<CarrousselFiscal> {
               alignment: Alignment.topCenter,
               child: PageView.builder(
                 controller: _pageController,
-                itemCount: widget.apiS[0].length,
+                itemCount: widget.apiS[1].length,
                 itemBuilder: (context, index) {
-                  final bannerCardCurrent = widget.apiS[0][index]['banner'];
-                  final titleCardCurrent = widget.apiS[0][index]['title'];
-                  final subtitleCardCurrent = widget.apiS[0][index]['subtitle'];
-                  final idCardCurrent = widget.apiS[0][index]['id'];
+                  final bannerCardCurrent = widget.apiS[1][index]['banner'];
+                  final titleCardCurrent = widget.apiS[1][index]['title'];
+                  final subtitleCardCurrent = widget.apiS[1][index]['subtitle'];
+                  final idCardCurrent = widget.apiS[1][index]['id'];
                   final currentAndLengthPage =
-                      '${index + 1} / ${widget.apiS[0].length}';
+                      '${index + 1} / ${widget.apiS[1].length}';
 
                   bool activePage = index == _currentPage;
                   final double vertical = activePage ? 5.0 : 25.0;
