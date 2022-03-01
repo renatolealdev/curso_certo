@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TitleCardCurrent extends StatelessWidget {
+// 'final' que recebe, via parâmetro, o Título do card atual(selecionado).
   final titleCardCurrent;
   const TitleCardCurrent({Key? key, required this.titleCardCurrent})
       : super(key: key);
@@ -8,7 +9,8 @@ class TitleCardCurrent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.center,
+      padding: EdgeInsets.only(top: 15.0),
+      alignment: Alignment.topCenter,
       child: Text(
         titleCardCurrent,
         textAlign: TextAlign.center,

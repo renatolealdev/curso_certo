@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TitleDetails extends StatelessWidget {
+// 'final' que recebe, via parâmetro, o Título do card atual(selecionado).
   final titleCurrent;
   const TitleDetails({Key? key, required this.titleCurrent}) : super(key: key);
 

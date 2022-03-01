@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CardSubtitle extends StatelessWidget {
+// 'final' que recebe, via parâmetro, o Subtítulo do card atual(selecionado).
   final subtitleCardCurrent;
   const CardSubtitle({Key? key, required this.subtitleCardCurrent})
       : super(key: key);

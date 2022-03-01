@@ -1,10 +1,9 @@
-import 'package:curso_certo/repository/get_api_details.dart';
-import 'package:page_transition/page_transition.dart';
-import '../screens/details.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import '../repository/get_api_details.dart';
+import '../screens/details.dart';
 import 'card_banner.dart';
 import 'card_marker.dart';
-import 'card_text_subtitle.dart';
 import 'card_text_title.dart';
 import 'progressIndicator.dart';
 
@@ -65,11 +64,12 @@ class _CarrousselFiscalState extends State<CarrousselFiscal> {
                 controller: _pageController,
                 itemCount: widget.apiS[0].length,
                 itemBuilder: (context, index) {
-                  final subtitleCardCurrent = widget.apiS[0][index]['subtitle'];
+                  final bannerCardCurrent = widget.apiS[0][index]['banner'];
                   final titleCardCurrent = widget.apiS[0][index]['title'];
+                  final subtitleCardCurrent = widget.apiS[0][index]['subtitle'];
+                  final idCardCurrent = widget.apiS[0][index]['id'];
                   final currentAndLengthPage =
                       '${index + 1} / ${widget.apiS[0].length}';
-                  final bannerCardCurrent = widget.apiS[0][index]['banner'];
 
                   bool activePage = index == _currentPage;
                   final double vertical = activePage ? 5.0 : 25.0;
@@ -100,7 +100,7 @@ class _CarrousselFiscalState extends State<CarrousselFiscal> {
                           alignment: Alignment.center,
                           duration: Duration(milliseconds: 500),
                           child: FutureBuilder(
-                            future: getAPIDetails(widget.apiS[0][index]['id']),
+                            future: getAPIDetails(idCardCurrent),
                             builder: (context, snapshot) {
                               if (snapshot.hasError) {
                                 return Center(
@@ -111,12 +111,10 @@ class _CarrousselFiscalState extends State<CarrousselFiscal> {
 
                               if (snapshot.hasData) {
                                 return Details(
-                                  bannerCurrent: widget.apiS[0][index]
-                                      ['banner'],
-                                  titleCurrent: widget.apiS[0][index]['title'],
-                                  subtitleCurrent: widget.apiS[0][index]
-                                      ['subtitle'],
-                                  idCurrent: widget.apiS[0][index]['id'],
+                                  bannerCurrent: bannerCardCurrent,
+                                  titleCurrent: titleCardCurrent,
+                                  subtitleCurrent: subtitleCardCurrent,
+                                  idCurrent: idCardCurrent,
                                   othersDetails: snapshot.data,
                                 );
                               }
@@ -131,15 +129,8 @@ class _CarrousselFiscalState extends State<CarrousselFiscal> {
                         children: [
                           Expanded(
                             flex: 1,
-                            child: Stack(
-                              alignment: Alignment.topCenter,
-                              children: [
-                                BannerCard(
-                                    bannerCardCurrent: bannerCardCurrent),
-                                MarkerCard(
-                                    currentAndLengthPage: currentAndLengthPage),
-                              ],
-                            ),
+                            child: BannerCard(
+                                bannerCardCurrent: bannerCardCurrent),
                           ),
                           Expanded(
                             flex: 1,
@@ -149,14 +140,16 @@ class _CarrousselFiscalState extends State<CarrousselFiscal> {
                                 children: [
                                   Expanded(
                                     flex: 3,
-                                    child: TitleCardCurrent(
-                                        titleCardCurrent: titleCardCurrent),
-                                  ),
-                                  Expanded(
-                                    flex: 2,
-                                    child: CardSubtitle(
-                                        subtitleCardCurrent:
-                                            subtitleCardCurrent),
+                                    child: Stack(
+                                      alignment: Alignment.bottomCenter,
+                                      children: [
+                                        TitleCardCurrent(
+                                            titleCardCurrent: titleCardCurrent),
+                                        MarkerCard(
+                                            currentAndLengthPage:
+                                                currentAndLengthPage),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),

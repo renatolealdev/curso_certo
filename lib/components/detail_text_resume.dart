@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ResumeDetails extends StatelessWidget {
+// 'final' que recebe, via parâmetro, a Descrição do curso atual(selecionado).
   final resumeCurrent;
   const ResumeDetails({Key? key, required this.resumeCurrent})
       : super(key: key);

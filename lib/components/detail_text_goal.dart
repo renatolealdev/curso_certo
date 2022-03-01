@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class GoalDetails extends StatelessWidget {
+// 'final' que recebe, via parâmetro, o Objetivo do curso atual(selecionado).
   final goalCurrent;
   const GoalDetails({Key? key, required this.goalCurrent}) : super(key: key);
 

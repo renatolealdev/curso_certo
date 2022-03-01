@@ -1,8 +1,8 @@
-import 'package:flutter/services.dart';
-import 'repository/get_apis.dart';
 import 'package:flutter/material.dart';
-import 'package:curso_certo/screens/curso_certo.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:flutter/services.dart';
+import './repository/get_apis.dart';
+import '../screens/curso_certo.dart';
 
 void main() {
   runApp(MyApp());
@@ -25,8 +25,8 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: "Curso Certo",
       home: Scaffold(
-        body: FutureBuilder(
-          future: getAPI(),
+        body: FutureBuilder(// Chama a função que consome as API's e enquanto carrega os dados, exibe a tela de SplashScreen, retornando uma tela de erro se houver.
+          future: getAPI(), // Função Future que consome as API's.
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               return Center(
@@ -34,11 +34,11 @@ class _MyAppState extends State<MyApp> {
               );
             }
 
-            if (snapshot.hasData) {
+            if (snapshot.hasData) { // Se houver sucesso no consumo das API's, retorna a Instância da Page principal que exibirá os Cards. *Passa como paâmetro, uma List com os dois EndPoints decodificados.
               return CursoCerto(apiS: snapshot.data);
             }
 
-            return AnimatedSplashScreen(
+            return AnimatedSplashScreen(// 'Tela' de SplashScreen
               splash: Image.asset('images/logo_splash.png'),
               nextScreen: Center(),
               disableNavigation: true,

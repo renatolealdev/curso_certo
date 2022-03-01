@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MarkerCard extends StatelessWidget {
+// 'final' que recebe, via parâmetro, o Card atual(selecionado) e a quantidade total de Cards - para o usuário sempre saber se localizar nos Cards.
   final currentAndLengthPage;
   const MarkerCard({Key? key, required this.currentAndLengthPage})
       : super(key: key);
@@ -18,6 +19,7 @@ class MarkerCard extends StatelessWidget {
         child: Text(
           '${currentAndLengthPage}',
           style: TextStyle(
+            color: Color.fromRGBO(16, 25, 32, 1),
             fontFamily: 'Kanit',
             fontSize: 12,
             fontWeight: FontWeight.w700,
