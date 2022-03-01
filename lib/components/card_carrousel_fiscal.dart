@@ -8,6 +8,7 @@ import 'card_text_title.dart';
 import 'progressIndicator.dart';
 
 class CarrouselFiscal extends StatefulWidget {
+// Esta Page, recebe como parâmetro em sua chamada, o resultado da função Future, que a Page CursoCerto() recebeu. Retorna uma List como o Decode dos dois EndPoints: <?c=fiscal> e <?c=contabil>
   final apiS;
   CarrouselFiscal({
     Key? key,
@@ -21,13 +22,13 @@ class CarrouselFiscal extends StatefulWidget {
 class _CarrouselFiscalState extends State<CarrouselFiscal> {
   final PageController _pageController = PageController(viewportFraction: 0.8);
 
-  int _currentPage = 0;
+  int _currentPage = 0; // var que armazena o valor da página atual
 
   @override
   void initState() {
-    _pageController.addListener(() {
-      int? next = _pageController.page!.round();
-      if (_currentPage != next) {
+    _pageController.addListener(() { // 'Escuta' em qual valor double o PageView está no momento. 
+      int? next = _pageController.page!.round(); // Converte esse valor double em int.
+      if (_currentPage != next) { // Estabelece a lógica para determinar se um Card está ativo ou não na tela.
         setState(() {
           _currentPage = next;
         });
@@ -64,6 +65,8 @@ class _CarrouselFiscalState extends State<CarrouselFiscal> {
                 controller: _pageController,
                 itemCount: widget.apiS[0].length,
                 itemBuilder: (context, index) {
+                  
+// Aqui, eu armazeno individualemnte os valores obtidos através da requisição API, de acordo com a informação que desejo. *Obs: 1º - o índice [0] representa qual lista eu estou acessando: [0] para a fiscal e [1] para a contabil. 2º - o [index] representa a page atual perante o PageView.builder (necessário para saber de qual curso o contexto se trata. 3º - os índices acessados por [' '] indição a chave correspondente ao valor que eu quero acessar.)
                   final bannerCardCurrent = widget.apiS[0][index]['banner'];
                   final titleCardCurrent = widget.apiS[0][index]['title'];
                   final subtitleCardCurrent = widget.apiS[0][index]['subtitle'];
@@ -71,6 +74,7 @@ class _CarrouselFiscalState extends State<CarrouselFiscal> {
                   final currentAndLengthPage =
                       '${index + 1} / ${widget.apiS[0].length}';
 
+// Essas vars correspondem a lógica de decoração do Card atual, onde somente o atual(_currentPage) irá apresentar BoxShadow. A final vertical representa a animação de aumentar o Container que estiver atualmente sendo exibido.
                   bool activePage = index == _currentPage;
                   final double vertical = activePage ? 5.0 : 25.0;
                   final double blur = activePage ? 3 : 0;
@@ -93,6 +97,7 @@ class _CarrouselFiscalState extends State<CarrouselFiscal> {
                         ),
                       ],
                     ),
+// InkWell serve para rastrear o toque ou clique no Card atual (semelhante ao GestureDetector()). Quando tocado executa o método Navigator, que chama uma PageTransition que por sua vez aplica um efeito de fade ao exibir a nova tela. Inclui nessa chamada de função, outra FutureBuilder, pois eu preciso acessar uma terceira API e ela depende de informação das duas anteriores para retornar corretamente o que o App precisa. Enquanto essa requisição é feita, o App apresenta um CircularProgressIndicator personalizado e caso a requisição falhe, uma tela de erro é exibida.
                     child: InkWell(
                       onTap: () {
                         Navigator.of(context).push(PageTransition(
@@ -110,6 +115,7 @@ class _CarrouselFiscalState extends State<CarrouselFiscal> {
                               }
 
                               if (snapshot.hasData) {
+// Se tudo ocorrer bem na requisição, é chamada uma Instância da Page Details e informado todos os parâmetros necessários, com base no Card selecionado pelo usuário.
                                 return Details(
                                   bannerCurrent: bannerCardCurrent,
                                   titleCurrent: titleCardCurrent,
@@ -118,7 +124,7 @@ class _CarrouselFiscalState extends State<CarrouselFiscal> {
                                   othersDetails: snapshot.data,
                                 );
                               }
-                              return ProgressIndicatorPage();
+                              return ProgressIndicatorPage(); // Indicador de progresso
                             },
                           ),
                         ));
@@ -129,7 +135,7 @@ class _CarrouselFiscalState extends State<CarrouselFiscal> {
                         children: [
                           Expanded(
                             flex: 1,
-                            child: BannerCard(
+                            child: BannerCard( // Chamada da instância do Banner que é exibido em cada Card
                                 bannerCardCurrent: bannerCardCurrent),
                           ),
                           Expanded(
@@ -143,9 +149,9 @@ class _CarrouselFiscalState extends State<CarrouselFiscal> {
                                     child: Stack(
                                       alignment: Alignment.bottomCenter,
                                       children: [
-                                        TitleCardCurrent(
+                                        TitleCardCurrent( // Chamada da instância do Título que é exibido em cada Card
                                             titleCardCurrent: titleCardCurrent),
-                                        MarkerCard(
+                                        MarkerCard( // Chamada da instância do marcador de página(Card) que é exibido em cada Card
                                             currentAndLengthPage:
                                                 currentAndLengthPage),
                                       ],
