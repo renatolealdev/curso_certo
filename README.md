@@ -50,3 +50,8 @@ https://user-images.githubusercontent.com/88440878/156220472-bbf6e9ef-fd29-4711-
 
 >“Esse projeto foi desenvolvido no período de Quinta-feira(24.02.2022) à Terça-feira(01.03.2022). Desde o início, até o final deste projeto, o Mundo vive uma triste realidade, um conflito armado entre Rússia e Ucrânia. Não quero, de modo algum, julgar qualquer das nações, mas, em homenagem a todo o povo Ucraniano, que está sofrendo uma restrição de liberdade e paz, só vista, outrora, na Segunda guerra Mundial, decidi por compor a paleta de cores deste projeto, com tons e sobre-tons das cores da bandeira nacional da Ucrânia. Sei que esse gesto não acabará com a guerra, muito menos trará à vida, àqueles que se foram no conflito, mas, que ao menos, cada vez que eu ou alguém abrir esse projeto (App), lembre-se dos envolvidos e, uma oração, reza, prece ou seja lá qual denominção usar para expressar e desejar o bem, seja feita. Isso sim, fará toda a diferença!” (Renato Leal.)
 >
+
+
+### Por fim, mas não menos importante, aqui estão os links para você baixar e testar o App no Android à vontade:
+- apk **Android**: https://drive.google.com/drive/folders/11dQsOnWWnq3g-tvnihck652ur7PnDFfH?usp=sharing
+>É só baixar e instalar um dos arquivos no seu Android e testar. Ahh! pode ser que você tenha que conceder permissão para instalar de desenvolvedor desconhecido, é só autorizar e continuar a instalação.
